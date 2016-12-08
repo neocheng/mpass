@@ -11,8 +11,8 @@ var server = require('http').createServer(app)
 var io = require('socket.io').listen(server);
 var device  = require('express-device');
 
-var runningPortNumber = process.env.PORT || 1337 || process.env.OPENSHIFT_NODEJS_PORT || 8080;
-var domain = process.env.DOMAIN || 'http://localhost' || process.env.OPENSHIFT_NODEJS_IP || 'http://172.30.230.111' ;
+var runningPortNumber = process.env.OPENSHIFT_NODEJS_PORT || 8080 ;
+var domain = process.env.OPENSHIFT_NODEJS_IP || 'http://172.30.230.111' ;
 if (domain.indexOf('herokuapp') < 0)
 	domain = domain + ':' + runningPortNumber;
 var sso_id = {};
