@@ -7,8 +7,8 @@ var device  = require('express-device');
 
 // var runningPortNumber = process.env.OPENSHIFT_NODEJS_PORT  ;
 var domain = process.env.OPENSHIFT_NODEJS_IP ||'http://lpass-lionflow.44fs.preview.openshiftapps.com'|| 'http://172.30.230.111' ;
-// if (domain.indexOf('herokuapp') < 0)
-// 	domain = domain + ':' + runningPortNumber;
+if (domain.indexOf('herokuapp') < 0)
+	domain = domain 
 var sso_id = {};
 
 
