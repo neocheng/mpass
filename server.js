@@ -90,9 +90,9 @@
 
 // server.listen(runningPortNumber);
 #!/bin/env node
-var http = require(‘http’);
+var http = require('http');
 http.createServer(function (req, res) {
-res.writeHead(200, {‘Content-Type’: ‘text/plain’});
+res.writeHead(200, {‘Content-Type’: 'text/plain'});
 res.end(‘Hello Node.js!\n’);
 }).listen(process.env.OPENSHIFT_NODEJS_PORT, process.env.OPENSHIFT_NODEJS_IP);
 
