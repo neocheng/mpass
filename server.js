@@ -12,6 +12,7 @@ var domain = process.env.OPENSHIFT_NODEJS_IP ||'http://lpass-lionflow.44fs.previ
 var sso_id = {};
 
 
+
 app.configure(function(){
 	// I need to access everything in '/public' directly
 	app.use(express.static(__dirname + '/public'));
