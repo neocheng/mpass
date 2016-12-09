@@ -14,6 +14,7 @@ var sso_id = {};
 
 
 
+
 app.configure(function(){
 	// I need to access everything in '/public' directly
 	app.use(express.static(__dirname + '/public'));
