@@ -1,14 +1,14 @@
 #!/bin/env node
 var express = require('express');
 var app = express();
-var server = require('http').createServer(app)
+var server = require('http').createServer(app);
 var io = require('socket.io').listen(server);
 var device  = require('express-device');
 
-// var runningPortNumber = process.env.OPENSHIFT_NODEJS_PORT  ;
+var runningPortNumber = process.env.OPENSHIFT_NODEJS_PORT  ;
 var domain = process.env.OPENSHIFT_NODEJS_IP ||'http://lpass-lionflow.44fs.preview.openshiftapps.com'|| 'http://172.30.230.111' ;
 if (domain.indexOf('herokuapp') < 0)
-	domain = domain 
+	domain = domain ;
 var sso_id = {};
 
 
