@@ -28,7 +28,7 @@ $(function(){
 		var result = data;
 		var _code = result.code;
 
-		alert('員編:'+result.name);
+		alert('序號:' + _code +'員編:'+result.name);
 		window.location.href = '/';
 	});
 	
