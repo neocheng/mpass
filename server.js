@@ -7,8 +7,13 @@ var device  = require('express-device');
 
 var runningPortNumber = process.env.OPENSHIFT_NODEJS_PORT || 8080 ;
 var domain = process.env.OPENSHIFT_NODEJS_IP ||'http://lpass-lionflow.44fs.preview.openshiftapps.com'|| 'http://172.30.230.111' ;
+
+// var runningPortNumber = process.env.PORT || 1337 || process.env.OPENSHIFT_NODEJS_PORT || 8080 ;
+// var domain = process.env.DOMAIN || 'http://10.30.3.25' || process.env.OPENSHIFT_NODEJS_IP ||'http://lpass-lionflow.44fs.preview.openshiftapps.com'|| 'http://172.30.230.111' ;
+
 if (domain.indexOf('herokuapp') < 0)
 	domain = domain ;
+// domain = domain + ':' + runningPortNumber;
 var sso_id = {};
 
 
@@ -56,10 +61,11 @@ app.get("/qr_sso_code", function(req, res) {
 
 io.sockets.on('connection', function (socket) {
 
-	app.get("/qrlogin/:logincode", function(req, res) {
+	app.get("/qrlogin/:logincode/:name", function(req, res) {
 		var _loginCode = req.params['logincode'];
+		var _nameCode = req.params['name'];
 		// response for mobile view, after mobile scan qrcode and link to page.
-		res.json({status: 'ok', response: 'logined - ' + _loginCode});
+		res.json({status: 'ok', response: 'logined - ' + _loginCode+',loginname - '+_nameCode});
 		
 		// if not find user, skip this login.
 		if ( ! sso_id[_loginCode]) {
@@ -72,7 +78,8 @@ io.sockets.on('connection', function (socket) {
 		return _socket.emit('login', {
 			msg:"logined",
 			code: _loginCode,
-			response: domain + '/user/' + _loginCode
+			response: domain + '/user/' + _loginCode,
+			name: _nameCode
 		});
 	});
 

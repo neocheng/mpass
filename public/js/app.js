@@ -28,7 +28,7 @@ $(function(){
 		var result = data;
 		var _code = result.code;
 
-		alert('login success:' + _code);
+		alert('員編:'+result.name);
 		window.location.href = '/';
 	});
 	
